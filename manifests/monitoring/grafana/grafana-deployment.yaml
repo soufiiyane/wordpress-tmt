@@ -49,11 +49,6 @@ spec:
         - name: grafana-datasource
           mountPath: /etc/grafana/provisioning/datasources/datasource.yaml
           subPath: datasource.yaml
-        - name: grafana-dashboard-providers
-          mountPath: /etc/grafana/provisioning/dashboards/dashboardproviders.yaml
-          subPath: dashboardproviders.yaml
-        - name: grafana-dashboards
-          mountPath: /etc/grafana/dashboards/wordpress
       volumes:
       - name: grafana-data
         persistentVolumeClaim:
@@ -61,15 +56,6 @@ spec:
       - name: grafana-datasource
         configMap:
           name: grafana-datasource
-      - name: grafana-dashboard-providers
-        configMap:
-          name: grafana-dashboard-providers
-          items:
-          - key: dashboardproviders.yaml
-            path: dashboardproviders.yaml
-      - name: grafana-dashboards
-        configMap:
-          name: grafana-dashboards-wordpress
 ---
 apiVersion: v1
 kind: Service
