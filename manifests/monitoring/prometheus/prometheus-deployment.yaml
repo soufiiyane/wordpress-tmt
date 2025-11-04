@@ -23,10 +23,11 @@ spec:
         image: prom/prometheus:v2.52.0
         args:
         - --config.file=/etc/prometheus/prometheus.yml
+        - --web.enable-lifecycle
         - --storage.tsdb.path=/prometheus
         - --storage.tsdb.retention.size=4GB
         - --storage.tsdb.retention.time=3d
-        - --web.enable-lifecycle
+        - --rule.files=/etc/prometheus/rules/*.yaml
         ports:
         - name: http
           containerPort: 9090
