@@ -27,7 +27,7 @@ spec:
         - --storage.tsdb.path=/prometheus
         - --storage.tsdb.retention.size=4GB
         - --storage.tsdb.retention.time=3d
-        - --rules.file=/etc/prometheus/rules/*.yaml
+        - --rule.file=/etc/prometheus/rules/*.yaml
         ports:
         - name: http
           containerPort: 9090
