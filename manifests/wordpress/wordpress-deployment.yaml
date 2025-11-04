@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: wordpress
-        image: soufiiyane/tmt-wordpress:latest
+        image: soufisiyane/tmt-wordpress:latest
         imagePullPolicy: Always
         env:
         - name: WORDPRESS_DB_HOST
