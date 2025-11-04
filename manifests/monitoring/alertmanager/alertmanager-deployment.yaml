@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: alertmanager
+      annotations:
+        reloader.stakater.com/auto: "true"
     spec:
       securityContext:
         runAsUser: 65534

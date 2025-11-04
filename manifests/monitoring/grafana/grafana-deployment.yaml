@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: grafana
+      annotations:
+        reloader.stakater.com/auto: "true"
     spec:
       securityContext:
         fsGroup: 472

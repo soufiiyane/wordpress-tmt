@@ -110,6 +110,23 @@ data:
         regex: (.+)
         target_label: __metrics_path__
         replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+    - job_name: wordpress-blackbox
+      metrics_path: /probe
+      scrape_interval: 1h
+      scrape_timeout: 30s
+      params:
+        module:
+        - http_wordpress
+      static_configs:
+      - targets:
+        - https://usemirai.site/
+      relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter.monitoring.svc.cluster.local:9115
     - job_name: kube-state-metrics
       static_configs:
       - targets:

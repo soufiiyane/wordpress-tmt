@@ -32,3 +32,11 @@ data:
         annotations:
           summary: "WordPress deployment unavailable"
           description: "wordpress/wordpress has 0 available replicas for more than 2 minutes."
+      - alert: WordpressEndpointDown
+        expr: probe_success{job="wordpress-blackbox"} == 0
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Public WordPress endpoint is unreachable"
+          description: "Blackbox probe to https://usemirai.site/ failed."

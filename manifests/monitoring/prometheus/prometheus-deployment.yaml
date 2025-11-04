@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: prometheus
+      annotations:
+        reloader.stakater.com/auto: "true"
     spec:
       securityContext:
         runAsUser: 65534
@@ -72,4 +74,3 @@ spec:
   - name: http
     port: 9090
     targetPort: http
-
