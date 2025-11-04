@@ -112,7 +112,7 @@ data:
         replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
     - job_name: wordpress-blackbox
       metrics_path: /probe
-      scrape_interval: 1m
+      scrape_interval: 2h
       scrape_timeout: 30s
       params:
         module:
