@@ -9,26 +9,26 @@ data:
     - name: wordpress.availability
       rules:
       - alert: WordpressMysqlDown
-        expr: absent(up{namespace="wordpress", deployment="mysql"} == 1)
+        expr: kube_deployment_spec_replicas{namespace="wordpress", deployment="mysql"} > 0 and kube_deployment_status_replicas_available{namespace="wordpress", deployment="mysql"} == 0
         for: 2m
         labels:
           severity: critical
         annotations:
-          summary: "MySQL deployment is not reporting as up"
-          description: "Deployment mysql in namespace wordpress has no ready pods for more than 2 minutes."
+          summary: "MySQL deployment unavailable"
+          description: "wordpress/mysql has 0 available replicas for more than 2 minutes."
       - alert: WordpressPhpMyAdminDown
-        expr: absent(up{namespace="wordpress", deployment="phpmyadmin"} == 1)
+        expr: kube_deployment_spec_replicas{namespace="wordpress", deployment="phpmyadmin"} > 0 and kube_deployment_status_replicas_available{namespace="wordpress", deployment="phpmyadmin"} == 0
         for: 2m
         labels:
           severity: warning
         annotations:
-          summary: "phpMyAdmin deployment is not reporting as up"
-          description: "Deployment phpmyadmin in namespace wordpress has no ready pods for more than 2 minutes."
+          summary: "phpMyAdmin deployment unavailable"
+          description: "wordpress/phpmyadmin has 0 available replicas for more than 2 minutes."
       - alert: WordpressSiteDown
-        expr: absent(up{namespace="wordpress", deployment="wordpress"} == 1)
+        expr: kube_deployment_spec_replicas{namespace="wordpress", deployment="wordpress"} > 0 and kube_deployment_status_replicas_available{namespace="wordpress", deployment="wordpress"} == 0
         for: 2m
         labels:
           severity: critical
         annotations:
-          summary: "WordPress deployment is not reporting as up"
-          description: "Deployment wordpress in namespace wordpress has no ready pods for more than 2 minutes."
+          summary: "WordPress deployment unavailable"
+          description: "wordpress/wordpress has 0 available replicas for more than 2 minutes."
