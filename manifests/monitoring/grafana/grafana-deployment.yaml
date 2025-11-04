@@ -3,6 +3,11 @@ kind: Deployment
 metadata:
   name: grafana
   namespace: monitoring
+  annotations:
+    argocd.argoproj.io/ignore-differences: |
+      spec:
+        jsonPointers:
+        - /spec/template/metadata/annotations/reloader.stakater.com~1last-reloaded
 spec:
   replicas: 1
   selector:
