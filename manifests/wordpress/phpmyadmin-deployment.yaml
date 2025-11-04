@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: phpmyadmin
-        image: phpmyadmin/phpmdyadmin:dydz
+        image: phpmyadmin/phpmyadmin:latest
         env:
         - name: PMA_HOST
           value: mysql.wordpress.svc.cluster.local
