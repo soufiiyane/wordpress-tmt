@@ -4,7 +4,7 @@ metadata:
   name: phpmyadmin
   namespace: wordpress
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: phpmyadmin
