@@ -13,6 +13,10 @@ spec:
       labels:
         app: alertmanager
     spec:
+      securityContext:
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
       containers:
       - name: alertmanager
         image: quay.io/prometheus/alertmanager:v0.27.0
